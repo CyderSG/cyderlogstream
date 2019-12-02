@@ -1,1 +1,1 @@
-curl -s "http://broker.kafka.cyder.com.sg:8081/subjects/" | jq '.'
+curl -s "http://broker.kafka.mydomain:8081/subjects/" | jq '.'
