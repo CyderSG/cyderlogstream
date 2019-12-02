@@ -12,7 +12,7 @@ public class RegisterSchemaCyderLogAPI {
 	public static void main(String[] args) {
 		try {
 			// schema registry url.
-			String url = "http://broker.kafka.cyder.com.sg:8081";
+			String url = "http://" + System.getenv("SCHEMAREGISTRY") + ":8081";
 			// associated topic name.
 			String topic = "cyder-log";
 			// avro schema avsc file path.

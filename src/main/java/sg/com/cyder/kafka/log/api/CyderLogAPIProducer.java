@@ -24,10 +24,10 @@ public class CyderLogAPIProducer {
 		Properties props = new Properties();
 
 		// Assign localhost id
-		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "broker.kafka.cyder.com.sg:9092");
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv("BROKER") + ":9092");
 
 		// Schema registry URL
-		props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://broker.kafka.cyder.com.sg:8081");
+		props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG,  "http://" + System.getenv("SCHEMAREGISTRY") + ":8081");
 
 		// Set acknowledgements for producer requests.
 		props.put(ProducerConfig.ACKS_CONFIG, "all");

@@ -20,7 +20,7 @@ public class CyderLogAPIConsumer {
 		String topicName = "cyder-log";
 
 		// normal consumer
-		properties.setProperty("bootstrap.servers", "broker.kafka.cyder.com.sg:9092");
+		properties.setProperty("bootstrap.servers", System.getenv("BROKER") + ":9092");
 		properties.put("group.id", "customer-consumer-group-v1");
 		properties.put("auto.commit.enable", "false");
 		properties.put("auto.offset.reset", "earliest");
@@ -28,7 +28,7 @@ public class CyderLogAPIConsumer {
 		// avro part (deserializer)
 		properties.setProperty("key.deserializer", StringDeserializer.class.getName());
 		properties.setProperty("value.deserializer", KafkaAvroDeserializer.class.getName());
-		properties.setProperty("schema.registry.url", "http://broker.kafka.cyder.com.sg:8081");
+		properties.setProperty("schema.registry.url", "http://" + System.getenv("SCHEMAREGISTRY") + ":8081");
 		properties.setProperty("specific.avro.reader", "true");
 
 		KafkaConsumer<String, ApiLog> kafkaConsumer = new KafkaConsumer<String, ApiLog>(properties);
